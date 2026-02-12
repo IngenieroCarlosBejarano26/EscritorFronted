@@ -1,0 +1,69 @@
+<div class="libros-container">
+  <div class="header">
+    <h2>Libros registrados</h2>
+    <button nz-button nzType="primary" (click)="openCreateModal()">
+      <i nz-icon nzType="plus"></i>
+      Crear libro
+    </button>
+  </div>
+
+  <nz-table
+    #tablaLibros
+    [nzData]="dataFiltrada"
+    [nzBordered]="true"
+    [nzSimple]="true"
+    [nzLoading]="false"
+    nzPaginationType="default"
+    nzPaginationPosition="bottom"
+    [nzShowSizeChanger]="true"
+    [nzFrontPagination]="true"
+    [nzShowPagination]="true"
+    nzSize="small"
+    [nzTitle]="buscarTemplate"
+    [nzPageSize]="pagesize"
+  >
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Año</th>
+        <th>Género</th>
+        <th>Número de páginas</th>
+        <th>Autor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="tablaLibros.data.length > 0">
+        <tr *ngFor="let libro of tablaLibros.data">
+          <td>{{ libro.title }}</td>
+          <td>{{ libro.year }}</td>
+          <td>{{ libro.genre }}</td>
+          <td>{{ libro.numberOfPages }}</td>
+          <td>{{ getAutorNombre(libro) }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </nz-table>
+
+  <ng-template #buscarTemplate>
+    <div class="buscar-container">
+      <nz-input-group [nzSuffix]="suffixIcon">
+        <input
+          type="text"
+          nz-input
+          placeholder="Buscar por título, género o autor..."
+          maxlength="100"
+          [(ngModel)]="searchGlobal"
+          (ngModelChange)="filtrarTabla()"
+        />
+      </nz-input-group>
+      <ng-template #suffixIcon>
+        <i nz-icon nzType="search"></i>
+      </ng-template>
+    </div>
+  </ng-template>
+
+  <ng-template #noLibros>
+    <p>No hay libros registrados.</p>
+  </ng-template>
+</div>
+
