@@ -1,0 +1,116 @@
+.autores-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+}
+
+.header button {
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: orangered !important;
+  border-color: orangered !important;
+  border-radius: 8px;
+  height: 40px;
+}
+
+.header button:hover {
+  background-color: rgb(251, 69, 3) !important;
+  border-color: rgb(251, 69, 3) !important;
+}
+
+.buscar-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.buscar-container nz-input-group {
+  width: 280px;
+}
+
+.buscar-container nz-input-group .ant-input {
+  border-radius: 8px;
+  height: 40px;
+  border-color: #d9d9d9;
+}
+
+.buscar-container nz-input-group .ant-input:hover,
+.buscar-container nz-input-group .ant-input:focus {
+  border-color: orangered !important;
+  box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.2) !important;
+}
+
+.registro-count {
+  display: block;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #666;
+}
+
+:host ::ng-deep .ant-table.ant-table-bordered {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+:host ::ng-deep .ant-table {
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+:host ::ng-deep .ant-table th {
+  background-color: #fafafa;
+  font-weight: 600;
+  color: #111;
+  border-color: #f0f0f0;
+}
+
+:host ::ng-deep .ant-table td {
+  border-color: #f0f0f0;
+}
+
+:host ::ng-deep .ant-table-row:hover > td {
+  background-color: #f5f5f5;
+}
+
+:host ::ng-deep .ant-pagination-item-active {
+  border-color: orangered !important;
+  background-color: #fff !important;
+}
+
+:host ::ng-deep .ant-pagination-item-active a {
+  color: orangered !important;
+}
+
+:host ::ng-deep .ant-pagination-item:hover a {
+  color: orangered !important;
+}
+
+:host ::ng-deep .ant-btn-primary {
+  background-color: orangered !important;
+  border-color: orangered !important;
+}
+
+:host ::ng-deep .ant-btn-primary:hover {
+  background-color: rgb(251, 69, 3) !important;
+  border-color: rgb(251, 69, 3) !important;
+}

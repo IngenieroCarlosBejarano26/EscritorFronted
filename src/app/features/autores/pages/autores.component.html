@@ -1,0 +1,68 @@
+<div class="autores-container">
+  <div class="header">
+    <h2>Autores registrados</h2>
+    <button nz-button nzType="primary" (click)="openCreateModal()">
+      <i nz-icon nzType="plus"></i>
+      Crear autor
+    </button>
+  </div>
+
+  <nz-table
+    #tablaAutores
+    [nzData]="dataFiltrada"
+    [nzBordered]="true"
+    [nzSimple]="true"
+    [nzLoading]="false"
+    nzPaginationType="default"
+    nzPaginationPosition="bottom"
+    [nzShowSizeChanger]="true"
+    [nzFrontPagination]="true"
+    [nzShowPagination]="true"
+    nzSize="small"
+    [nzTitle]="buscarTemplate"
+    [nzPageSize]="pagesize"
+  >
+    <thead>
+      <tr>
+        <th>Nombre completo</th>
+        <th>Fecha de nacimiento</th>
+        <th>Ciudad de procedencia</th>
+        <th>Correo electrónico</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="tablaAutores.data.length > 0">
+        <tr *ngFor="let autor of tablaAutores.data">
+          <td>{{ autor.fullName }}</td>
+          <td>{{ autor.birthDate | date : 'dd/MM/yyyy' }}</td>
+          <td>{{ autor.cityOfOrigin }}</td>
+          <td>{{ autor.email }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </nz-table>
+
+
+  <ng-template #buscarTemplate>
+    <div class="buscar-container">
+      <nz-input-group [nzSuffix]="suffixIcon">
+        <input
+          type="text"
+          nz-input
+          placeholder="Buscar por nombre, email o ciudad..."
+          maxlength="100"
+          [(ngModel)]="searchGlobal"
+          (ngModelChange)="filtrarTabla()"
+        />
+      </nz-input-group>
+      <ng-template #suffixIcon>
+        <i nz-icon nzType="search"></i>
+      </ng-template>
+    </div>
+  </ng-template>
+
+  <ng-template #noAutores>
+    <p>No hay autores registrados.</p>
+  </ng-template>
+</div>
+
